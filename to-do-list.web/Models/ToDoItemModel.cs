@@ -2,7 +2,8 @@
 {
     public class ToDoItemModel
     {
-        public Guid ItemId { get; set; }
-        public string Name { get; set; }
+        public int ItemId { get; set; }
+        public string? Name { get; set; }
+        public bool Completed { get; set; } = false;
     }
 }
