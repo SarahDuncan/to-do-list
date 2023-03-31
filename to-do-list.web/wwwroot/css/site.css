@@ -1,18 +1,169 @@
+@font-face {
+    font-family: merriFont;
+    src: "/fonts/Merriweather/Merriweather-Black.ttf";
+}
+
+@font-face {
+    font-family: merriFontItalic;
+    src: "/fonts/Merriweather/Merriweather-Italic.ttf";
+}
+
+@font-face {
+    font-family: merriFontBold;
+    src: "/fonts/Merriweather/Merriweather-Bold.ttf";
+}
+
 html {
-  font-size: 14px;
+    font-size: 16px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #FBEAEB;
+    min-height: 100%;
+    margin: 0;
+    font-size: 16px;
 }
+
+.nav {
+    background-color: #2F3C7E;
+    min-height: 50px;
+    align-items: center;
+}
+
+.nav-items-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: 20px;
+}
+
+.nav-item a {
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+    .nav-item a:hover {
+        color: #FBEAEB;
+        font-family: merriFont;
+    }
+
+.heading {
+    text-align: center;
+    padding: 15px;
+    font-family: merriFont;
+}
+
+.todo-description {
+    text-align: center;
+}
+
+.todo-create-button {
+    display: block;
+    background-color: #2F3C7E;
+    border: 2px solid black;
+    width: 15%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px;
+    align-items: center;
+}
+
+.todo-create-btn-link {
+    color: white;
+    text-decoration: none;
+}
+
+    .todo-create-btn-link:hover {
+        color: #FBEAEB;
+    }
+
+.footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    min-height: 50px;
+    align-items: center;
+    border-top: 2px solid #2F3C7E;
+}
+
+    .footer div {
+        margin-left: 20px;
+    }
+
+.to-do-list {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.to-do-list-home {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.to-do-list-header {
+    font-size: 20px;
+    padding: 10px;
+    font-family: merriFont;
+    text-align: center;
+}
+
+.to-do-item-create {
+    display: flex;
+    flex-direction: row;
+}
+
+.to-do-item-create-input {
+    margin: 2.5px;
+    border: 1px solid rgba(40, 60, 126, 0.5);
+}
+
+.to-do-item-create-btn {
+    margin: 2.5px;
+    border: none;
+    background-color: rgba(40,60,126,1);
+    color: white;
+    text-align: center;
+    align-items: center;
+}
+
+.ul-list {
+    list-style-type: "\1F58B";
+}
+
+.to-do-list-item {
+    padding: 2px;
+    font-family: merriFontItalic;
+}
+
+.return-home-link {
+    text-decoration: none;
+    color: black;
+    text-decoration: underline;
+    padding: 5px;
+    font-size: smaller;
+}
+
+    .return-home-link:hover {
+        font-family: merriFontBold;
+        font-size: larger;
+        color: #2F3C7E;
+    }

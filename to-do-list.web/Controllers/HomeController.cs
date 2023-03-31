@@ -1,32 +1,30 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using to_do_list.web.Models;
+using to_do_list.web.ViewModels;
 
 namespace to_do_list.web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+        private static List<ToDoItemModel> toDoList = new List<ToDoItemModel>() { new ToDoItemModel() { ItemId = new Guid(), Name = "one item" }, new ToDoItemModel() { ItemId = new Guid(), Name = "two items" } };
 
         public IActionResult Index()
         {
-            return View();
+            var model = new ToDoViewModel() { ToDoList = toDoList };
+            return View("Index", model);
         }
 
-        public IActionResult Privacy()
+        [HttpPost]
+        public IActionResult Index(ToDoItemModel createModel)
         {
-            return View();
-        }
+            toDoList.Add(new ToDoItemModel() { ItemId = new Guid(), Name = createModel.Name });
+            var model = new ToDoViewModel()
+            {
+                ToDoList = toDoList
+            };
+            return View("Index", model);
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
