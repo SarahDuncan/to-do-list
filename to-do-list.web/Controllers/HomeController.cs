@@ -31,7 +31,7 @@ namespace to_do_list.web.Controllers
                 return NotFound();
             }
 
-            _context.ToDoItemModel.Add(new ToDoItemModel() { ItemId = new int(), Name = createModel.Name });
+            _context.ToDoItemModel.Add(new ToDoItemModel() { Id = new int(), Name = createModel.Name });
             _context.SaveChanges();
 
             var toDoList = new ToDoViewModel() { ToDoList = _context.ToDoItemModel.ToList() };
@@ -47,7 +47,7 @@ namespace to_do_list.web.Controllers
                 return NotFound();
             }
 
-            _context.ToDoItemModel.Remove(new ToDoItemModel() { ItemId = (int)itemId});
+            _context.ToDoItemModel.Remove(new ToDoItemModel() { Id = (int)itemId});
             await _context.SaveChangesAsync();
 
             var toDoList = new ToDoViewModel() { ToDoList = _context.ToDoItemModel.ToList() };

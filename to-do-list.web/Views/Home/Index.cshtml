@@ -5,9 +5,11 @@
 @if (Model.ToDoList.Count == 0)
 {
     <p class="todo-description">There are no items on your to-do list.</p>
-    <div class="todo-create-button">
-        <a class="todo-create-btn-link" href="/todo/create">Add an item to my list</a>
-    </div>
+    @*<form method="get" asp-controller="create" asp-action="create">*@
+        <div class="todo-create-button">
+            <a class="todo-create-btn-link" asp-controller="create" asp-action="create">Add an item to my list</a>
+        </div>
+    @*</form>*@
 }
 else
 {

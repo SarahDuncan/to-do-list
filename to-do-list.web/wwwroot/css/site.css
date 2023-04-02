@@ -167,3 +167,9 @@ body {
         font-size: larger;
         color: #2F3C7E;
     }
+
+.add-to-do-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
