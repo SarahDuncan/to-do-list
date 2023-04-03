@@ -19,38 +19,22 @@ namespace to_do_list.web.Controllers
         {
             var items = await _context.ToDoItemModel.ToListAsync();
 
-            return View("Index", new ToDoViewModel() { ToDoList = items });
+            return View("Index", new ToDoListViewModel() { ToDoList = items });
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Index(ToDoViewModel createModel)
+        public IActionResult Index(ToDoListViewModel createModel)
         {
-            if (createModel.Name == null || createModel.Name == string.Empty)
+            if (createModel.ToDoItem.Name == null || createModel.ToDoItem.Name == string.Empty)
             {
                 return NotFound();
             }
 
-            _context.ToDoItemModel.Add(new ToDoItemModel() { Id = new int(), Name = createModel.Name });
+            _context.ToDoItemModel.Add(new ToDoItemModel() { Id = new int(), Name = createModel.ToDoItem.Name, Completed = createModel.ToDoItem.Completed });
             _context.SaveChanges();
 
-            var toDoList = new ToDoViewModel() { ToDoList = _context.ToDoItemModel.ToList() };
-
-            return View("Index", toDoList);
-        }
-
-        //Add delete option for each to-do list item on interface that links to this action.
-        public async Task<IActionResult> Delete(int? itemId)
-        {
-            if (itemId == null)
-            {
-                return NotFound();
-            }
-
-            _context.ToDoItemModel.Remove(new ToDoItemModel() { Id = (int)itemId});
-            await _context.SaveChangesAsync();
-
-            var toDoList = new ToDoViewModel() { ToDoList = _context.ToDoItemModel.ToList() };
+            var toDoList = new ToDoListViewModel() { ToDoList = _context.ToDoItemModel.ToList() };
 
             return View("Index", toDoList);
         }

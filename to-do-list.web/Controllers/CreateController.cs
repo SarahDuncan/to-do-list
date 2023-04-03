@@ -18,24 +18,22 @@ namespace to_do_list.web.Controllers
         public async Task<IActionResult> Create()
         {
             var items = await _dbContext.ToDoItemModel.ToListAsync();
-            var toDoList = new ToDoViewModel() { ToDoList = items };
+            var toDoList = new ToDoListViewModel() { ToDoList = items };
 
             return View("Create", toDoList);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(ToDoViewModel createModel)
+        public async Task<IActionResult> Create(ToDoListViewModel createModel)
         {
-            if (createModel.Name == null || createModel.Name == string.Empty)
+            if (createModel.ToDoItem.Name == null || createModel.ToDoItem.Name == string.Empty)
             {
                 return NotFound();
             }
 
-            await _dbContext.ToDoItemModel.AddAsync(new ToDoItemModel() { Id = new int(), Name = createModel.Name });
+            await _dbContext.ToDoItemModel.AddAsync(new ToDoItemModel() { Id = new int(), Name = createModel.ToDoItem.Name, Completed = false });
             await _dbContext.SaveChangesAsync();
-
-            var toDoList = new ToDoViewModel() { ToDoList = _dbContext.ToDoItemModel.ToList() };
 
             return RedirectToAction("Index", "Home");
         }
