@@ -1,4 +1,4 @@
-﻿@model to_do_list.web.ViewModels.ToDoViewModel
+﻿@model to_do_list.web.ViewModels.ToDoListViewModel
 
 <h1 class="heading">What's on your to-do list?</h1>
 
@@ -6,7 +6,7 @@
 {
     <p class="todo-description">There are no items on your to-do list.</p>
     <div class="todo-create-button">
-        <a class="todo-create-btn-link" href="/todo/create">Add an item to my list</a>
+        <a class="todo-create-btn-link" asp-controller="create" asp-action="create">Add an item to my list</a>
     </div>
 }
 else
@@ -15,16 +15,21 @@ else
         <ul class="ul-list">
             @foreach (var item in Model.ToDoList)
             {
-                <li class="to-do-list-item">@item.Name</li>
+                <li class="to-do-list-item">
+                    @item.Name
+                    <a asp-controller="edit" asp-action="edit" asp-route-id="@item.Id">edit</a>
+                    <a asp-controller="delete" asp-action="DeleteItem" asp-route-id="@item.Id">delete</a>
+                </li>
             }
             <li>
                 <p class="to-do-list-item">
                     <form class="to-do-item-create" method="post" asp-controller="Home" asp-action="Index">
-                        <input class="to-do-item-create-input" asp-for="Name" type="text" name="Name" aria-label="Textbox input to add a new item to the to-do list." />
-                        <button class="to-do-item-create-btn" type="submit" name="submit">Save</button>
+                        <input class="to-do-item-create-input" asp-for=@Model.ToDoItem.Name type="text" aria-label="Textbox input to add a new item to the to-do list." />
+                        <button class="to-do-item-create-btn" type="submit">Save</button>
                     </form>
                 </p>
             </li>
         </ul>
+        <a asp-controller="delete" asp-action="DeleteList" value="Clear to-do list">Clear to-do list</a>
     </div>
 }

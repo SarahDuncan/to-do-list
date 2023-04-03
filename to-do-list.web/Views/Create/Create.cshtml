@@ -1,0 +1,9 @@
+﻿@model to_do_list.web.ViewModels.ToDoListViewModel
+
+<h1 class="heading">Add a task to your to-do list</h1>
+<div class="add-to-do-item">
+    <form class="to-do-item-create" method="post" asp-controller="Create" asp-action="Create">
+        <input class="to-do-item-create-input" asp-for=@Model.ToDoItem.Name type="text" aria-label="Textbox input to add a new item to the to-do list." />
+        <button class="to-do-item-create-btn" type="submit" name="submit">Save</button>
+    </form>
+</div>

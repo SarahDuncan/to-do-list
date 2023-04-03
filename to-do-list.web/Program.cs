@@ -1,4 +1,8 @@
+﻿using Microsoft.EntityFrameworkCore;
+using to_do_list.web.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<ToDoListDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ToDoListDbContext") ?? throw new InvalidOperationException("Connection string 'ToDoListDbContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

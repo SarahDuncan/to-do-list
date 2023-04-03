@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
+using to_do_list.web.Data;
 using to_do_list.web.Models;
 using to_do_list.web.ViewModels;
 
@@ -7,24 +8,35 @@ namespace to_do_list.web.Controllers
 {
     public class HomeController : Controller
     {
-        private static List<ToDoItemModel> toDoList = new List<ToDoItemModel>() { new ToDoItemModel() { ItemId = new Guid(), Name = "one item" }, new ToDoItemModel() { ItemId = new Guid(), Name = "two items" } };
+        private readonly ToDoListDbContext _context;
 
-        public IActionResult Index()
+        public HomeController(ToDoListDbContext context)
         {
-            var model = new ToDoViewModel() { ToDoList = toDoList };
-            return View("Index", model);
+            _context = context;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var items = await _context.ToDoItemModel.ToListAsync();
+
+            return View("Index", new ToDoListViewModel() { ToDoList = items });
         }
 
         [HttpPost]
-        public IActionResult Index(ToDoItemModel createModel)
+        [ValidateAntiForgeryToken]
+        public IActionResult Index(ToDoListViewModel createModel)
         {
-            toDoList.Add(new ToDoItemModel() { ItemId = new Guid(), Name = createModel.Name });
-            var model = new ToDoViewModel()
+            if (createModel.ToDoItem.Name == null || createModel.ToDoItem.Name == string.Empty)
             {
-                ToDoList = toDoList
-            };
-            return View("Index", model);
+                return NotFound();
+            }
 
+            _context.ToDoItemModel.Add(new ToDoItemModel() { Id = new int(), Name = createModel.ToDoItem.Name, Completed = createModel.ToDoItem.Completed });
+            _context.SaveChanges();
+
+            var toDoList = new ToDoListViewModel() { ToDoList = _context.ToDoItemModel.ToList() };
+
+            return View("Index", toDoList);
         }
     }
 }
