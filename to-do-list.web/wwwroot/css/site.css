@@ -42,7 +42,6 @@ body {
 
     .nav-header:hover {
         color: #FBEAEB;
-        font-family: merriFont;
     }
 
 /* Shared classes */
@@ -50,7 +49,6 @@ body {
 .heading {
     text-align: center;
     padding: 15px;
-    font-family: merriFont;
 }
 
 .background {
@@ -172,7 +170,6 @@ body {
 /* Edit */
 
 .edit-item{
-    font-family:merriFontBold;
     padding:15px;
     display:flex;
     flex-direction:row;
