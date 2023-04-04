@@ -11,8 +11,8 @@ using to_do_list.web.Data;
 namespace to_do_list.web.Migrations
 {
     [DbContext(typeof(ToDoListDbContext))]
-    [Migration("20230331210134_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20230331210015_ThirdMigration")]
+    partial class ThirdMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
