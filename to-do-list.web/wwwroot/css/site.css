@@ -49,7 +49,6 @@ body {
 
 .background {
     display: flex;
-    justify-content: space-evenly;
     background-color: white;
     border: 0.5px solid #2F3C7E;
     width: 30%;
@@ -71,7 +70,7 @@ body {
     text-align: center;
 }
 
-.home-create {
+.home-create-item {
     display: block;
     width: 15%;
     padding: 10px;
@@ -82,7 +81,7 @@ body {
     border: 2px solid black;
 }
 
-.home-create-btn {
+.home-create-item-btn {
     color: white;
     text-decoration: none;
 }
@@ -91,22 +90,59 @@ body {
         color: #FBEAEB;
     }
 
-.home-to-do-list {
-    display: flex;
+.home-to-do-list-background {
     flex-direction: column;
-    background-color: #eaebfb;
-    border: 0.5px solid #2F3C7E;
-    width: 35%;
-    margin: 0 auto;
-    align-items: flex-start;
+    width:100%;
 }
 
-.home-to-do-item-create-input {
+.home-table{
+    width:100%;
+}
+
+.home-table-headings {
+    background-color: #b5bde3;
+    color: white;
+}
+
+td{
+    padding:5px;
+}
+
+.home-table-data-name {
+    background-color: #e0e3f3;
+}
+
+.home-table-data-completed {
+    background-color: #e0e3f3;
+}
+
+.home-table-data-add {
+    background-color: #e0e3f3;
+}
+
+.home-table-data-add-name {
+    border:none;
+}
+
+.home-to-do-list{
+    margin:10px;
+}
+
+.home-to-do-list-item p{
+    margin:3px;
+}
+
+.home-to-do-list-add{
+    display:flex;
+    flex-direction:column;
+}
+
+.home-to-do-list-add-input {
     margin: 2.5px;
     border: 1px solid rgba(40, 60, 126, 0.5);
 }
 
-.home-to-do-item-create-btn {
+.home-to-do-list-add-btn {
     margin: 2.5px;
     border: none;
     background-color: rgba(40,60,126,1);
@@ -119,22 +155,24 @@ body {
     color: #FBEAEB;
 }
 
-.home-to-do-item-create-item-save {
-    display: flex;
-    justify-content: end;
-    width: 100%;
+.home-btns{
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-end;
+    margin:20px;
+    width:64%;
 }
 
-.home-clear-btn {
+.home-clear-list-btn {
     text-decoration: none;
-    margin: 2%;
-    padding: 1%;
+    margin:5px;
+    padding:8px;
     color: white;
     background-color: #2F3C7E;
     border: 0.5px solid #2F3C7E;
 }
 
-    .home-clear-btn:hover {
+    .home-clear-list-btn:hover {
         color: #FBEAEB;
     }
 
@@ -155,6 +193,10 @@ body {
     }
 
 /* Create */
+
+.create-background {
+    justify-content: space-evenly;
+}
 
 .create-item-name{
     padding:8px;

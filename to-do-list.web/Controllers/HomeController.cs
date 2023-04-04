@@ -26,12 +26,18 @@ namespace to_do_list.web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Index(ToDoListViewModel createModel)
         {
-            if (createModel.ToDoItem.Name == null || createModel.ToDoItem.Name == string.Empty)
+            if (createModel == null)
             {
                 return NotFound();
             }
 
-            _context.ToDoItemModel.Add(new ToDoItemModel() { Id = new int(), Name = createModel.ToDoItem.Name, Completed = createModel.ToDoItem.Completed });
+            _context.ToDoItemModel.UpdateRange(createModel.ToDoList);
+
+            if (createModel.ToDoItem.Name != null)
+            {
+                _context.ToDoItemModel.Add(new ToDoItemModel() { Id = new int(), Name = createModel.ToDoItem.Name, Completed = createModel.ToDoItem.Completed });
+            }
+
             _context.SaveChanges();
 
             var toDoList = new ToDoListViewModel() { ToDoList = _context.ToDoItemModel.ToList() };
