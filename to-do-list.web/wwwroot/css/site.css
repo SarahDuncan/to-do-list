@@ -8,15 +8,11 @@
 html {
     position: relative;
     min-height: 100%;
-    font-size:16px;
 }
 
 body {
-    margin-bottom: 60px;
     background-color: #FBEAEB;
     min-height: 100%;
-    margin: 0;
-    font-size: 16px;
 }
 
 /*shared layout*/
@@ -53,17 +49,16 @@ body {
 
 .background {
     display: flex;
-    flex-direction: column;
     justify-content: space-evenly;
     background-color: white;
     border: 0.5px solid #2F3C7E;
-    width: 50%;
+    width: 30%;
     margin: 0 auto;
 }
 
 .to-do-item-create {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 /* Home page */
@@ -161,18 +156,64 @@ body {
 
 /* Create */
 
-.create-add-item{
+.create-item-name{
+    padding:8px;
+    padding-left:0px;
+}
+
+.create-item-name-input{
+    margin-left: 10px;
+    margin-top:5px;
+}
+
+.create-item-name-label{
+    margin-right:5px;
+}
+
+.create-item-completed {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    padding: 8px;
+    padding-left: 0px;
+}
+
+.create-item-completed-input {
+    margin-left: 10px;
+    transform: scale(1.8);
+}
+
+.create-item-completed-label {
+    margin-right: 5px;
+}
+
+.create-to-do-item-save {
+    display: flex;
+    justify-content: end;
+}
+
+.create-save-btn {
+    width:35%;
+    margin: 2%;
+    padding: 1%;
+    color: white;
+    background-color: #2F3C7E;
+    border: 0.5px solid #2F3C7E;
+}
+
+    .create-save-btn:hover {
+        color: #FBEAEB;
+    }
+
+.create-home-link a{
+    color:black;
+    padding-left:35%;
 }
 
 /* Edit */
 
-.edit-item{
-    padding:15px;
-    display:flex;
-    flex-direction:row;
+.edit-item {
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
 }
 
 .edit-label{
