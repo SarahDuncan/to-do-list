@@ -23,7 +23,7 @@ else
                 <div>
                     <p>
                         <form class="to-do-item-create" method="post" asp-controller="Home" asp-action="Index">
-                            <input class="home-to-do-item-create-input" placeholder="Add a new thing to do" asp-for=@Model.ToDoItem.Name type="text" aria-label="Textbox input to add a new item to the to-do list." />
+                            <input class="home-to-do-item-create-input" placeholder="Add a new thing to do" asp-for=@Model.ToDoItem.Name type="text" aria-label="Textbox input to add a new item to the to-do list." value=""/>
                             <button class="home-to-do-item-create-btn" type="submit">Save</button>
                         </form>
                     </p>
