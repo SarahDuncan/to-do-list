@@ -1,74 +1,37 @@
 ﻿@model to_do_list.web.ViewModels.ToDoListViewModel
 
+<script type="text/javascript" src="/js/site.js"></script>
+
 <h1 class="heading">What <span class="brand-text">tings</span> are on your to-do list?</h1>
 
 @if (Model.ToDoList.Count == 0)
 {
     <p class="home-noitems">There are no items on your to-do list.</p>
     <div class="home-create-item">
-        <a class="home-create-item-btn" asp-controller="create" asp-action="create">Add an item to my list</a>
+        <a class="home-create-item-btn" asp-controller="create" asp-action="create">Add a task to my list</a>
     </div>
 }
 else
 {
-    <form class="home-to-do-list-add" method="post" asp-controller="Home" asp-action="Index">
-        <div class="background">
-            <div class="home-to-do-list-background">
-                <div>
-                    <table class="home-table">
-                        <tr class="home-table-headings">
-                            <td>
-                                Task
-                            </td>
-                            <td>
-                                Completed
-                            </td>
-                        </tr>
-                        @foreach (var item in Model.ToDoList)
-                        {
-                            <tr class=table-row>
-
-                                <td class="home-table-data-name">@item.Name</td>
-                                <td class="home-table-data-completed">
-                                    <input class="create-item-completed-input" asp-for=@item.Completed type="checkbox" aria-label="Checkbox input to add a new item to the to-do list and indicate wether it has been completed or not." value=@item.Completed/>
-                                </td>
-                            </tr>
-                        }
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="home-btns">
-            <div class="home-clear-list">
-                <button class="home-clear-list-btn" asp-controller="delete" asp-action="DeleteList" value="Clear list">Clear list</button>
-            </div>
-            <div class="home-clear-list">
-                <button class="home-clear-list-btn" type="submit">Save</button>
-            </div>
-        </div>
-    </form>
-
-
-
-
-
-    @*            <ul class="home-to-do-list">
-                @foreach (var item in Model.ToDoList)
-                {
-                    <li class="home-to-do-list-item">
-                        <p>@item.Name <input type="checkbox" value=@item.Completed /></p>
-                    </li>
-                }
-                <li>
-                    <form class="home-to-do-list-add" method="post" asp-controller="Home" asp-action="Index">
-                        <input class="home-to-do-list-add-input" placeholder="Add a new thing to do..." asp-for=@Model.ToDoItem.Name type="text" aria-label="Textbox input to add a new item to the to-do list." value="" />
-                        <button class="home-to-do-list-add-btn" type="submit">Save</button>
-                    </form>
-                </li>
-            </ul>
-            <div class="home-clear-list">
-                <a class="home-clear-list-btn" asp-controller="delete" asp-action="DeleteList" value="Clear to-do list">Clear to-do list</a>
-            </div>
-        </div>
-    </div>*@
+    <table class="home-table">
+        <tbody>
+            @foreach (var item in Model.ToDoList)
+            {
+                <tr class=table-row>
+                    <td class="home-completed">
+                        <form method="post" asp-controller="Home" asp-action="Index">
+                            <input type="hidden" name="id" value="@item.Id">
+                            <input class="home-completed" type="checkbox" name="completed" value="true" @(item.Completed ? "checked" : "") onchange="this.form.submit();" />
+                        </form>
+                    </td>
+                    <td class="home-name">
+                        @item.Name
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="home-btns">
+        <a class="home-clear-list-btn" href="/delete/deletelist" value="Clear list">Clear list</a>
+    </div>
 }

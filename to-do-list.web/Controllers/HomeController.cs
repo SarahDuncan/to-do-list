@@ -24,25 +24,23 @@ namespace to_do_list.web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Index(ToDoListViewModel createModel)
+        public async Task<IActionResult> Index(int? id, bool completed)
         {
-            if (createModel == null)
+            var toDoList = await _context.ToDoItemModel.ToListAsync();
+
+            if (id != null)
             {
-                return NotFound();
+                var toDoItem = toDoList.Find(x => x.Id == id);
+
+                if(toDoItem != null)
+                {
+                    toDoItem.Completed = completed;
+                    _context.ToDoItemModel.Update(toDoItem);
+                    _context.SaveChanges();
+                }
             }
 
-            _context.ToDoItemModel.UpdateRange(createModel.ToDoList);
-
-            if (createModel.ToDoItem.Name != null)
-            {
-                _context.ToDoItemModel.Add(new ToDoItemModel() { Id = new int(), Name = createModel.ToDoItem.Name, Completed = createModel.ToDoItem.Completed });
-            }
-
-            _context.SaveChanges();
-
-            var toDoList = new ToDoListViewModel() { ToDoList = _context.ToDoItemModel.ToList() };
-
-            return View("Index", toDoList);
+            return RedirectToAction("Index");
         }
     }
 }
