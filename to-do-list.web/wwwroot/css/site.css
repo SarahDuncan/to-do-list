@@ -1,21 +1,3 @@
-@font-face {
-    font-family: merriFont;
-    src: "/fonts/Merriweather/Merriweather-Black.ttf";
-}
-
-@font-face {
-    font-family: merriFontItalic;
-    src: "/fonts/Merriweather/Merriweather-Italic.ttf";
-}
-
-@font-face {
-    font-family: merriFontBold;
-    src: "/fonts/Merriweather/Merriweather-Bold.ttf";
-}
-
-html {
-    font-size: 16px;
-}
 
 @media (min-width: 768px) {
     html {
@@ -29,12 +11,11 @@ html {
 }
 
 body {
-    margin-bottom: 60px;
     background-color: #FBEAEB;
     min-height: 100%;
-    margin: 0;
-    font-size: 16px;
 }
+
+/*shared layout*/
 
 .nav {
     background-color: #2F3C7E;
@@ -42,184 +23,243 @@ body {
     align-items: center;
 }
 
-.nav-items-group {
+.nav-titles {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin-left: 20px;
 }
 
-.nav-item a {
+.nav-header {
     padding: 10px;
     color: white;
     text-decoration: none;
 }
 
-    .nav-item a:hover {
+    .nav-header:hover {
         color: #FBEAEB;
-        font-family: merriFont;
     }
+
+/* Shared classes */
 
 .heading {
     text-align: center;
     padding: 15px;
-    font-family: merriFont;
 }
 
-.todo-description {
+.background {
+    display: flex;
+    background-color: white;
+    border: 0.5px solid #2F3C7E;
+    width: 30%;
+    margin: 0 auto;
+}
+
+.to-do-item-create {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Home page */
+
+.brand-text {
+    font-family: "Lucida Console";
+}
+
+.home-noitems {
     text-align: center;
 }
 
-.todo-create-button {
-    display: block;
-    background-color: #2F3C7E;
-    border: 2px solid black;
+.home-create-item {
     width: 15%;
+    padding: 10px;
     margin: 0 auto;
     text-align: center;
-    padding: 10px;
-    align-items: center;
+    background-color: #2F3C7E;
+    border: 2px solid black;
+    text-decoration: none;
 }
 
-.todo-create-btn-link {
+.home-create-item-btn {
     color: white;
     text-decoration: none;
 }
 
-    .todo-create-btn-link:hover {
+.home-create-item-btn:hover {
+    color: #FBEAEB;
+}
+
+.home-table {
+    margin: 0 auto;
+    width: 40%;
+    font-size: 23px;
+}
+
+.table-row {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    text-align: right;
+    padding-right: 5px;
+}
+
+input[type="checkbox"] {
+    transform: scale(1.3);
+}
+
+td{
+    padding-left:5px;
+}
+
+.home-completed{
+    width:25%;
+}
+
+.home-name {
+    margin-left: 5px;
+    width: 35%;
+}
+
+.home-delete {
+    width: 10%;
+    margin-left: 5px;
+}
+
+.home-edit {
+    width: 10%;
+    margin-left: 5px;
+}
+
+.home-links{
+    font-size:15px;
+}
+
+/*.strikethrough {
+    text-decoration: line-through;
+}*/
+
+.home-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.home-clear-list-btn {
+    padding: 8px;
+    color: white;
+    background-color: #2F3C7E;
+    border: 0.5px solid #2F3C7E;
+    text-decoration: none;
+}
+
+    .home-clear-list-btn:hover {
         color: #FBEAEB;
     }
+
+/* Footer */
 
 .footer {
     position: absolute;
     width: 100%;
     bottom: 0;
     min-height: 50px;
-    align-items: center;
     border-top: 2px solid #2F3C7E;
+    display: flex;
+    align-items: center;
 }
 
     .footer div {
         margin-left: 20px;
     }
 
-.to-do-list {
+/* Create */
+
+.create-background {
+    justify-content: space-evenly;
+}
+
+.create-item-name {
+    padding: 8px;
+    padding-left: 0px;
+}
+
+.create-item-name-label {
+    margin-right: 5px;
+}
+
+.create-item-name-input {
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.create-item-completed {
     display: flex;
-    flex-direction: column;
-    width: 50%;
-    margin: 0 auto;
-    align-items: center;
+    padding: 8px;
+    padding-left: 0px;
 }
 
-.to-do-list-home {
+.create-item-completed-label {
+    margin-right: 5px;
+}
+
+.create-item-completed-input {
+    margin-left: 10px;
+    transform: scale(1.8);
+}
+
+.create-to-do-item-save {
     display: flex;
-    flex-direction: column;
-    width: 50%;
-    margin: 0 auto;
-    align-items: center;
+    justify-content: end;
 }
 
-.to-do-list-header {
-    font-size: 20px;
-    padding: 10px;
-    font-family: merriFont;
-    text-align: center;
-}
-
-.to-do-item-create {
-    display: flex;
-    flex-direction: row;
-}
-
-.to-do-item-create-input {
-    margin: 2.5px;
-    border: 1px solid rgba(40, 60, 126, 0.5);
-}
-
-.to-do-item-create-btn {
-    margin: 2.5px;
-    border: none;
-    background-color: rgba(40,60,126,1);
+.create-save-btn {
+    width: 35%;
+    margin: 2%;
+    padding: 1%;
     color: white;
-    text-align: center;
-    align-items: center;
+    background-color: #2F3C7E;
+    border: 0.5px solid #2F3C7E;
 }
 
-.ul-list {
-    list-style-type: "\1F58B";
-}
-
-.to-do-list-item {
-    padding: 2px;
-    font-family: merriFontItalic;
-}
-
-.return-home-link {
-    text-decoration: none;
-    color: black;
-    text-decoration: underline;
-    padding: 5px;
-    font-size: smaller;
-}
-
-    .return-home-link:hover {
-        font-family: merriFontBold;
-        font-size: larger;
-        color: #2F3C7E;
+    .create-save-btn:hover {
+        color: #FBEAEB;
     }
 
-.add-to-do-item{
+.create-home-link a {
+    color: black;
+    padding-left: 35%;
+}
+
+/* Edit */
+
+.edit-item {
+    padding: 15px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
 }
 
-.hide{
-    display:none;
-}
-
-.edit-item{
-    display:flex;
-    flex-direction:column;
-    justify-content:space-evenly;
-    background-color:white;
-    border: 0.5px solid #2F3C7E;
-    width:50%;
-    margin:0 auto;
-}
-
-.edit-item-input{
-    font-family:merriFontBold;
-    padding:15px;
-    display:flex;
-    flex-direction:row;
-}
-
-.edit-label{
+.edit-label {
     padding-left: 10%;
 }
 
-.edit-text-input{
-    margin-left:6%;
+.edit-text-input {
+    margin-left: 6%;
 }
 
-.edit-checkbox-input{
-    margin-left:2.5%;
-    width:10%
+.edit-checkbox-input {
+    margin-left: 2.5%;
+    width: 10%
 }
 
-.edit-save-btn{
-    display: flex;
-    justify-content:end;
-}
-
-.edit-btn{
-    width:25%;
+.btn {
+    width: 25%;
     margin: 2%;
-    padding:0.5%;
-    color:white;
-    background-color:#2F3C7E;
+    padding: 0.5%;
+    color: white;
+    background-color: #2F3C7E;
     border: 0.5px solid #2F3C7E;
 }
-
-

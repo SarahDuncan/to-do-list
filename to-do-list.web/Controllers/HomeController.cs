@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using to_do_list.web.Data;
-using to_do_list.web.Models;
 using to_do_list.web.ViewModels;
 
 namespace to_do_list.web.Controllers
@@ -15,6 +14,7 @@ namespace to_do_list.web.Controllers
             _context = context;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             var items = await _context.ToDoItemModel.ToListAsync();
@@ -24,19 +24,23 @@ namespace to_do_list.web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Index(ToDoListViewModel createModel)
+        public async Task<IActionResult> Index(int? id, bool completed)
         {
-            if (createModel.ToDoItem.Name == null || createModel.ToDoItem.Name == string.Empty)
+            var toDoList = await _context.ToDoItemModel.ToListAsync();
+
+            if (id != null)
             {
-                return NotFound();
+                var toDoItem = toDoList.Find(x => x.Id == id);
+
+                if (toDoItem != null)
+                {
+                    toDoItem.Completed = completed;
+                    _context.ToDoItemModel.Update(toDoItem);
+                    _context.SaveChanges();
+                }
             }
 
-            _context.ToDoItemModel.Add(new ToDoItemModel() { Id = new int(), Name = createModel.ToDoItem.Name, Completed = createModel.ToDoItem.Completed });
-            _context.SaveChanges();
-
-            var toDoList = new ToDoListViewModel() { ToDoList = _context.ToDoItemModel.ToList() };
-
-            return View("Index", toDoList);
+            return RedirectToAction("Index");
         }
     }
 }

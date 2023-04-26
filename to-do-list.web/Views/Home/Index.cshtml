@@ -1,35 +1,43 @@
 ﻿@model to_do_list.web.ViewModels.ToDoListViewModel
 
-<h1 class="heading">What's on your to-do list?</h1>
+<script type="text/javascript" src="/js/site.js"></script>
+
+<h1 class="heading">What <span class="brand-text">tings</span> are on your to-do list?</h1>
 
 @if (Model.ToDoList.Count == 0)
 {
-    <p class="todo-description">There are no items on your to-do list.</p>
-    <div class="todo-create-button">
-        <a class="todo-create-btn-link" asp-controller="create" asp-action="create">Add an item to my list</a>
+    <p class="home-noitems">There are no items on your to-do list.</p>
+    <div class="home-create-item">
+        <a class="home-create-item-btn" asp-controller="create" asp-action="create">Add a task to my list</a>
     </div>
 }
 else
 {
-    <div class="to-do-list-home">
-        <ul class="ul-list">
+    <table class="home-table">
+        <tbody>
             @foreach (var item in Model.ToDoList)
             {
-                <li class="to-do-list-item">
-                    @item.Name
-                    <a asp-controller="edit" asp-action="edit" asp-route-id="@item.Id">edit</a>
-                    <a asp-controller="delete" asp-action="DeleteItem" asp-route-id="@item.Id">delete</a>
-                </li>
+                <tr class=table-row>
+                    <td class="home-completed">
+                        <form method="post" asp-controller="Home" asp-action="Index">
+                            <input type="hidden" name="id" value="@item.Id">
+                            <input class="home-completed" type="checkbox" name="completed" value="true" @(item.Completed ? "checked" : "") onchange="this.form.submit();" />
+                        </form>
+                    </td>
+                    <td class="home-name">
+                        @item.Name
+                    </td>
+                    <td class="home-delete"> 
+                        <a class="home-links" href="delete/deleteitem?itemid=@item.Id">delete</a>
+                    </td>
+                    <td class="home-edit">
+                        <a class="home-links" href="edit/edit?itemid=@item.Id">edit</a>
+                    </td>
+                </tr>
             }
-            <li>
-                <p class="to-do-list-item">
-                    <form class="to-do-item-create" method="post" asp-controller="Home" asp-action="Index">
-                        <input class="to-do-item-create-input" asp-for=@Model.ToDoItem.Name type="text" aria-label="Textbox input to add a new item to the to-do list." />
-                        <button class="to-do-item-create-btn" type="submit">Save</button>
-                    </form>
-                </p>
-            </li>
-        </ul>
-        <a asp-controller="delete" asp-action="DeleteList" value="Clear to-do list">Clear to-do list</a>
+        </tbody>
+    </table>
+    <div class="home-btns">
+        <a class="home-clear-list-btn" href="delete/deletelist" value="Clear list">Clear list</a>
     </div>
 }
