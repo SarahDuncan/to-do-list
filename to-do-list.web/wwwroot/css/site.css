@@ -11,15 +11,15 @@ html {
 }
 
 body {
-    background-color: #FBEAEB;
+    background-color: #eddcd9;
     min-height: 100%;
 }
 
 /*shared layout*/
 
 .nav {
-    background-color: #2F3C7E;
-    min-height: 50px;
+    background-color: #f2ebe9;
+    min-height: 85px;
     align-items: center;
 }
 
@@ -32,27 +32,34 @@ body {
 
 .nav-header {
     padding: 10px;
-    color: white;
     text-decoration: none;
+    color: #264143;
+    font-size: 20px;
 }
 
     .nav-header:hover {
-        color: #FBEAEB;
+        color: #e99f4c;
     }
+
+.nav-header-logo{
+    color:#de5499;
+}
 
 /* Shared classes */
 
 .heading {
     text-align: center;
     padding: 15px;
+    color:#264143;
 }
 
 .background {
     display: flex;
-    background-color: white;
-    border: 0.5px solid #2F3C7E;
+    background-color: #f2ebe9;
+    border: 2px solid #e99f4c;
     width: 30%;
     margin: 0 auto;
+    padding:10px;
 }
 
 .to-do-item-create {
@@ -64,6 +71,13 @@ body {
 
 .brand-text {
     font-family: "Lucida Console";
+    text-decoration: underline;
+    color: #de5499;
+}
+
+.brand-text-h{
+    /*font-style:italic;*/
+    font-size:30px;
 }
 
 .home-noitems {
@@ -75,18 +89,22 @@ body {
     padding: 10px;
     margin: 0 auto;
     text-align: center;
-    background-color: #2F3C7E;
-    border: 2px solid black;
+    border: 2px solid #264143;
     text-decoration: none;
 }
 
 .home-create-item-btn {
-    color: white;
+    color: black;
     text-decoration: none;
 }
 
+.home-create-item:hover {
+    background-color: #f2ebe9;
+    border: 2px solid #de5499;
+}
+
 .home-create-item-btn:hover {
-    color: #FBEAEB;
+    color: #e99f4c;
 }
 
 .home-table {
@@ -101,7 +119,7 @@ body {
 }
 
 form {
-    text-align: right;
+    text-align: center;
     padding-right: 5px;
 }
 
@@ -109,17 +127,22 @@ input[type="checkbox"] {
     transform: scale(1.3);
 }
 
-td{
-    padding-left:5px;
+tr{
+    background-color:white;
+    border:2px solid #eddcd9;
 }
 
-.home-completed{
-    width:25%;
+td {
+    padding-left: 5px;
+}
+
+.home-completed {
+    width: 25%;
 }
 
 .home-name {
     margin-left: 5px;
-    width: 35%;
+    width: 30%;
 }
 
 .home-delete {
@@ -132,13 +155,16 @@ td{
     margin-left: 5px;
 }
 
-.home-links{
-    font-size:15px;
+.home-links {
+    font-size: 15px;
+    text-decoration:none;
+    color:#e99f4c;
 }
 
-/*.strikethrough {
-    text-decoration: line-through;
-}*/
+    .home-links:hover{
+        text-decoration:underline;
+        color:#e99f4c;
+    }
 
 .home-btns {
     display: flex;
@@ -150,14 +176,15 @@ td{
 
 .home-clear-list-btn {
     padding: 8px;
-    color: white;
-    background-color: #2F3C7E;
-    border: 0.5px solid #2F3C7E;
+    color: black;
+    border: 2px solid #264143;
     text-decoration: none;
 }
 
     .home-clear-list-btn:hover {
-        color: #FBEAEB;
+        background-color: #f2ebe9;
+        border: 2px solid #de5499;
+        color:#e99f4c;
     }
 
 /* Footer */
@@ -166,8 +193,8 @@ td{
     position: absolute;
     width: 100%;
     bottom: 0;
-    min-height: 50px;
-    border-top: 2px solid #2F3C7E;
+    min-height: 75px;
+    border-top: 2px solid #264143;
     display: flex;
     align-items: center;
 }
@@ -216,22 +243,28 @@ td{
     justify-content: end;
 }
 
+
 .create-save-btn {
     width: 35%;
     margin: 2%;
     padding: 1%;
-    color: white;
-    background-color: #2F3C7E;
-    border: 0.5px solid #2F3C7E;
+    color: black;
+    border: 2px solid #264143;
 }
 
     .create-save-btn:hover {
-        color: #FBEAEB;
+        background-color: #f2ebe9;
+        border: 2px solid #de5499;
+        color: #e99f4c;
     }
 
 .create-home-link a {
     color: black;
     padding-left: 35%;
+}
+
+input{
+    border:none;
 }
 
 /* Edit */

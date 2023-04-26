@@ -2,13 +2,13 @@
 
 <script type="text/javascript" src="/js/site.js"></script>
 
-<h1 class="heading">What <span class="brand-text">tings</span> are on your to-do list?</h1>
+<h1 class="heading">all my <span class="brand-text">t<span class="brand-text-h">h</span>ings</span> to do</h1>
 
 @if (Model.ToDoList.Count == 0)
 {
-    <p class="home-noitems">There are no items on your to-do list.</p>
+    <p class="home-noitems">There are no tasks on your to-do list.</p>
     <div class="home-create-item">
-        <a class="home-create-item-btn" asp-controller="create" asp-action="create">Add a task to my list</a>
+        <a class="home-create-item-btn" asp-controller="create" asp-action="create">new task</a>
     </div>
 }
 else
@@ -38,6 +38,6 @@ else
         </tbody>
     </table>
     <div class="home-btns">
-        <a class="home-clear-list-btn" href="delete/deletelist" value="Clear list">Clear list</a>
+        <a class="home-clear-list-btn" href="delete/deletelist" value="Clear list">clear list</a>
     </div>
 }
