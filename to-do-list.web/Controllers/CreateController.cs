@@ -32,7 +32,7 @@ namespace to_do_list.web.Controllers
                 return NotFound();
             }
 
-            await _dbContext.ToDoItemModel.AddAsync(new ToDoItemModel() { Id = new int(), Name = createModel.ToDoItem.Name, Completed = false });
+            await _dbContext.ToDoItemModel.AddAsync(new ToDoItemModel() { Id = new int(), Name = createModel.ToDoItem.Name, Completed = createModel.ToDoItem.Completed });
             await _dbContext.SaveChangesAsync();
 
             return RedirectToAction("Index", "Home");
