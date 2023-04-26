@@ -1,9 +1,24 @@
 ﻿@model to_do_list.web.ViewModels.ToDoListViewModel
 
-<h1 class="heading">Add a task to your to-do list</h1>
-<div class="add-to-do-item">
+<h1 class="heading">Change this task</h1>
+<div class="background create-background">
     <form class="to-do-item-create" method="post" asp-controller="Create" asp-action="Create">
-        <input class="to-do-item-create-input" asp-for=@Model.ToDoItem.Name type="text" aria-label="Textbox input to add a new item to the to-do list." />
-        <button class="to-do-item-create-btn" type="submit" name="submit">Save</button>
+
+        <input type="hidden" asp-for="@Model.ToDoItem.Id" />
+
+        <div class="create-item-name">
+            <label class="create-item-name-label">What do you need to do?</label>
+            <input class="create-item-name-input" asp-for=@Model.ToDoItem.Name type="text" aria-label="Textbox input to add a new item to the to-do list." />
+        </div>
+        <div class="create-item-completed">
+            <label class="create-item-completed-label">Have you done it?</label>
+            <input class="create-item-completed-input" asp-for=@Model.ToDoItem.Completed type="checkbox" aria-label="Checkbox input to add a new item to the to-do list and indicate wether it has been completed or not." />
+        </div>
+        <div class="create-to-do-item-save">
+            <button class="create-save-btn" type="submit" name="submit">Save</button>
+        </div>
     </form>
+</div>
+<div class="create-home-link">
+    <a asp-controller="Home" asp-action="Index">< back home</a>
 </div>

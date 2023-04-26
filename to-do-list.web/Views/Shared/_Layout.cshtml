@@ -1,5 +1,5 @@
-﻿@{
-    ViewData["Title"] = "My to-do list";
+﻿﻿@{
+    ViewData["Title"] = "tings to do";
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -14,9 +14,10 @@
 <body>
     <header>
         <div class="nav">
-            <div class="nav-items-group">
-                <div class="nav-item">
+            <div class="nav-titles">
+                <div>
                     <a class="nav-header" asp-area="" asp-controller="Home" asp-action="Index">@ViewData["Title"]</a>
+                    <a class="nav-header" asp-area="" asp-controller="Create" asp-action="Create">Add a new task</a>
                 </div>
             </div>
         </div>
